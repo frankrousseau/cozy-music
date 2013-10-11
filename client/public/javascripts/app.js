@@ -1008,10 +1008,10 @@ window.require.register("views/app_view", function(exports, require, module) {
   
 });
 window.require.register("views/off_screen_nav", function(exports, require, module) {
-  
   /*
     Off screen nav view
   */
+
   var BaseView, OffScreenNav, Playlist, PlaylistNavView, ViewCollection, app, _ref,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
@@ -1162,10 +1162,10 @@ window.require.register("views/off_screen_nav", function(exports, require, modul
   
 });
 window.require.register("views/player/player", function(exports, require, module) {
-  
   /*
   Here is the player with some freaking awesome features like play and pause...
   */
+
   var BaseView, Player, VolumeManager, app, _ref,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
@@ -1873,11 +1873,11 @@ window.require.register("views/playlist_nav_view", function(exports, require, mo
   
 });
 window.require.register("views/playqueue", function(exports, require, module) {
-  
   /*
       added for this list :
           - drag and drop
   */
+
   var PlayQueueView, TrackListView, TrackView, _ref,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
@@ -2235,7 +2235,7 @@ window.require.register("views/templates/tracklist", function(exports, require, 
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<div class="viewport"><table><thead><tr><th class="left"></th><th class="field title">Title</th><th class="field artist">Artist</th><th class="field album">Album</th><th class="field num">#</th><th class="right"></th></tr></thead><tbody id="track-list"></tbody></table></div>');
+  buf.push('<div class="viewport"><table><thead><tr><th class="left"></th><th class="field title">Title</th><th class="field artist">Artist</th><th class="field album">Album</th><th class="field num">#</th><th class="right"></th><th class="right"></th></tr></thead><tbody id="track-list"></tbody></table></div>');
   }
   return buf.join("");
   };
@@ -2246,7 +2246,9 @@ window.require.register("views/templates/tracklist_item", function(exports, requ
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<td id="state" class="left"></td><td class="field title">' + escape((interp = model.title) == null ? '' : interp) + '</td><td class="field artist">' + escape((interp = model.artist) == null ? '' : interp) + '</td><td class="field album">' + escape((interp = model.album) == null ? '' : interp) + '</td><td class="field num">' + escape((interp = model.track) == null ? '' : interp) + '</td><td class="right"><div id="delete-button" title="remove" class="player-button size-20 signal-button"><i class="icon-remove"></i></div></td>');
+  buf.push('<td class="left state"></td><td class="field title">' + escape((interp = model.title) == null ? '' : interp) + '</td><td class="field artist">' + escape((interp = model.artist) == null ? '' : interp) + '</td><td class="field album">' + escape((interp = model.album) == null ? '' : interp) + '</td><td class="field num">' + escape((interp = model.track) == null ? '' : interp) + '</td><td class="field download"> <a');
+  buf.push(attrs({ 'href':("tracks/" + (model.id) + "/attach/" + (model.slug) + "") }, {"href":true}));
+  buf.push('><i class="icon-download"></i></a></td><td class="right"><div id="delete-button" title="remove" class="player-button size-20 signal-button"><i class="icon-remove"></i></div></td>');
   }
   return buf.join("");
   };
@@ -2257,13 +2259,15 @@ window.require.register("views/templates/tracks_item", function(exports, require
   var buf = [];
   with (locals || {}) {
   var interp;
-  buf.push('<td id="state" class="left"><div id="add-to-button" title="add to playlist" class="player-button size-20"><i class="icon-plus"></i></div><div id="play-track-button" title="queue this song" class="player-button size-20"><i class="icon-share-alt"></i></div></td><td class="field title"><input');
+  buf.push('<td class="left state"><div id="add-to-button" title="add to playlist" class="player-button size-20"><i class="icon-plus"></i></div><div id="play-track-button" title="queue this song" class="player-button size-20"><i class="icon-share-alt"></i></div></td><td class="field title"><input');
   buf.push(attrs({ 'type':("text"), 'value':("" + (model.title) + ""), 'readonly':(true), "class": ('mousetrap') }, {"type":true,"value":true,"readonly":true}));
   buf.push('/></td><td class="field artist"><input');
   buf.push(attrs({ 'type':("text"), 'value':("" + (model.artist) + ""), 'readonly':(true), "class": ('mousetrap') }, {"type":true,"value":true,"readonly":true}));
   buf.push('/></td><td class="field album"><input');
   buf.push(attrs({ 'type':("text"), 'value':("" + (model.album) + ""), 'readonly':(true), "class": ('mousetrap') }, {"type":true,"value":true,"readonly":true}));
-  buf.push('/><div id="play-album-button" title="queue this album" class="player-button size-20"><i class="icon-share"></i></div></td><td class="field num">' + escape((interp = model.track) == null ? '' : interp) + '</td><td class="right"><div id="delete-button" title="delete definitively" class="player-button size-20 signal-button"><i class="icon-remove"></i></div></td>');
+  buf.push('/><div id="play-album-button" title="queue this album" class="player-button size-20"><i class="icon-share"></i></div></td><td class="field num">' + escape((interp = model.track) == null ? '' : interp) + '</td><td class="right download"> <a');
+  buf.push(attrs({ 'href':("tracks/" + (model.id) + "/attach/" + (model.slug) + ""), 'target':("_blank"), "class": ('player-button') + ' ' + ('size-20') }, {"href":true,"target":true}));
+  buf.push('><i class="icon-download"></i></a></td><td class="right"><div id="delete-button" title="delete definitively" class="player-button size-20 signal-button"><i class="icon-remove"></i></div></td>');
   }
   return buf.join("");
   };
@@ -2371,12 +2375,12 @@ window.require.register("views/tracklist_item", function(exports, require, modul
   
 });
 window.require.register("views/tracks", function(exports, require, module) {
-  
   /*
       added for this list :
           - sort
           - auto fill with blank tracks
   */
+
   var TrackListView, TrackView, TracksView, _ref,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
@@ -2480,7 +2484,7 @@ window.require.register("views/tracks", function(exports, require, module) {
       var blankTrack;
       blankTrack = $(document.createElement('tr'));
       blankTrack.addClass("track blank");
-      blankTrack.html("<td colspan=\"6\"></td>");
+      blankTrack.html("<td colspan=\"7\"></td>");
       return this.$collectionEl.append(blankTrack);
     };
 
@@ -2694,6 +2698,9 @@ window.require.register("views/tracks_item", function(exports, require, module) 
 
     TracksItemView.prototype.onClick = function(event, element) {
       var _this = this;
+      if (event.target.className === 'icon-download') {
+        return;
+      }
       event.preventDefault();
       event.stopPropagation();
       if (this.model.attributes.state === 'server') {
@@ -3232,11 +3239,11 @@ window.require.register("views/uploader", function(exports, require, module) {
       isValidInput = false;
       while (!isValidInput) {
         input = prompt(defaultMsg, defaultVal);
-        if (input.match(/^https/)) {
-          input = input.replace(/^https:\/\//i, 'http://');
-        }
         if (input == null) {
           return;
+        }
+        if (input.match(/^https/)) {
+          input = input.replace(/^https:\/\//i, 'http://');
         }
         if (input.match(/^http:\/\/www.youtube.com\/watch?/)) {
           startIndex = input.search(/v=/) + 2;
