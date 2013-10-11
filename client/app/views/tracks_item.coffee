@@ -60,6 +60,7 @@ module.exports = class TracksItemView extends TrackListItemView
         @isEdited = ''
 
     onClick: (event, element)=>
+        return if event.target.className is 'icon-download'
         event.preventDefault()
         event.stopPropagation()
         if @model.attributes.state is 'server'
