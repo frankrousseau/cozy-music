@@ -5,11 +5,14 @@ rounded-border()
             
 dark-grey = #444
 yellow-grey = #f5f0d7
-red = #E58067
 
 @font-face
     font-family: title
-    src: url('fonts/chunkfive.otf')
+    src: url('fonts/xolonium-bold.otf')
+
+@font-face
+    font-family: titlelight
+    src: url('fonts/earthbound.otf')
 
 @font-face
     font-family: main
@@ -30,15 +33,18 @@ body
     background-size: cover
 
 h2
+    font-family: titlelight
+    font-size: 22px
+
 h3
 h4
     font-family: main
     font-weight: normal
 
 h3
-    padding-left: 10px
+    padding-left: 0px
     padding-right: 10px
-    font-size: 24px
+    font-size: 22px
     margin-bottom: 10px
     margin-top: 10px
 
@@ -59,8 +65,11 @@ a:visited
 h1
     font-family: title
     font-weight: normal
-    font-size: 48px
-    padding-left: 95px
+    font-size: 52px
+    margin-bottom: 0
+    margin-top: 10px
+    line-height: 52px
+    color: orange
 
 button
     border: 0
@@ -71,14 +80,17 @@ button
     margin-right: 5px
     font-family: main
     font-size: 22px
-    width:  400px
+    width: 100%
     margin-bottom: 10px
+    outline: none
+    inline: none
 
 button:hover
-    background-color: red
+    background-color: red - 20%
+    outline: none
 
 button:active
-    background-color: red - 20%
+    background-color: red - 30%
     box-shadow: 2px 2px 2px red - 40% inset
 
 a
@@ -87,7 +99,7 @@ button
 
 .text
     font-family: main
-    font-size: 20px
+    font-size: 18px
 
 .pa2
     padding: 20px
@@ -96,7 +108,7 @@ button
     margin-bottom: 50px
 
 .left-bar
-    max-width: 480px
+    max-width: 800px
     padding-left: 20px
     padding-right: 20px
     background: #222
@@ -112,6 +124,17 @@ button
 
 .center-text
     text-align: center
+
+.title-icon
+    margin-top: 20px
+
+.bold
+    font-weight: bold
+
+@media (max-width: 900px)
+    .w50
+    .w66
+        width: 100%
 
 @media (max-width: 600px)
     .container
@@ -133,6 +156,5 @@ button
         padding: 20px
 
     button 
-        width: 280px
         font-size: 18px
 
